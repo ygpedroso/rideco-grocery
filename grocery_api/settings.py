@@ -84,11 +84,19 @@ WSGI_APPLICATION = 'grocery_api.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 SQLITE_DB_URL = 'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL', default=SQLITE_DB_URL)
-    )
-}
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL'),
+            conn_max_age=600, ssl_require=True
+        )
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=SQLITE_DB_URL,
+        )
+    }
 
 
 # Password validation
