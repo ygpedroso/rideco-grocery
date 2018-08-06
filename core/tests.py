@@ -10,3 +10,7 @@ class ProductModelTest(TestCase):
 
     def test_verbose_name_plural(self):
         self.assertEqual(str(Product._meta.verbose_name_plural), "products")
+
+    def test_product_creation(self):
+        product = Product.objects.create(name="Buy soup")
+        self.assertTrue(isinstance(product, Product))
