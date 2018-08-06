@@ -19,5 +19,8 @@ it will connect to this one instead. The `DATABASE_URL` environment variable mus
 `postgres://USER:PASSWORD@HOST:PORT/NAME`. Currently it only supports `postgres` database. For using `mongodb` or `mysql` 
 databases installing the `pip` packages for each driver is required.
 
+## Tests
+1. Run application Tests + coverage `python3 manage.py test`
+
 ## Grocery List staging server url:
 [https://rideco-grocery.herokuapp.com/](https://rideco-grocery.herokuapp.com/)
