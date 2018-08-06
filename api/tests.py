@@ -66,3 +66,9 @@ class ProductSchemaQueryTest(TestCase):
                 ]
             }
         }
+
+    @staticmethod
+    def test_products_with_wrong_params():
+        client = Client(schema)
+        executed = client.execute('''query{products {id wrongParams}}''')
+        assert len(executed['errors']) > 0
