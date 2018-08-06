@@ -22,5 +22,10 @@ databases installing the `pip` packages for each driver is required.
 ## Tests
 1. Run application Tests + coverage `python3 manage.py test`
 
+## Debug
+By default the application will obtain the `DEBUG` variable value from an environment variable. If it is not defined it
+will fallback to `False` by default. To run the server with `DEBUG` enabled, provide the `DEBUG` environment variable with
+`True`.   
+
 ## Grocery List staging server url:
 [https://rideco-grocery.herokuapp.com/](https://rideco-grocery.herokuapp.com/)
