@@ -23,4 +23,11 @@ class ProductSchemaMutationTest(TestCase):
         assert len(executed['errors']) > 0
         assert Product.objects.count() == 2
 
+    @staticmethod
+    def test_remove_product():
+        client = Client(schema)
+        executed = client.execute('''mutation{removeProduct(productId: 1){success errors product{id name}}}''')
+        assert executed['data']['removeProduct']['success'] is True
+        assert Product.objects.count() == 1
+
 
