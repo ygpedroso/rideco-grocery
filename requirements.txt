@@ -7,6 +7,7 @@ graphql-core==2.1
 graphql-relay==0.4.5
 iso8601==0.1.12
 promise==2.1
+psycopg2==2.7.5
 python-decouple==3.1
 pytz==2018.5
 Rx==1.6.1
