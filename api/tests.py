@@ -16,3 +16,11 @@ class ProductSchemaMutationTest(TestCase):
         assert executed['data']['createProduct']['success'] is True
         assert Product.objects.count() == 3
 
+    @staticmethod
+    def test_create_product_with_missing_required_params():
+        client = Client(schema)
+        executed = client.execute('''mutation{createProduct(price: "Buy Soda"){success errors product{id name}}}''')
+        assert len(executed['errors']) > 0
+        assert Product.objects.count() == 2
+
+
