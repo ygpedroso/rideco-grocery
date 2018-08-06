@@ -4,10 +4,14 @@ from core.models import Product
 from api.schema import schema
 
 
+def create_product_test_data():
+    Product.objects.create(id=1, name="Buy milk")
+    Product.objects.create(id=2, name="Pick up Tomatoes")
+
+
 class ProductSchemaMutationTest(TestCase):
     def setUp(self):
-        Product.objects.create(id=1, name="Buy milk")
-        Product.objects.create(id=2, name="Pick up Tomatoes")
+        create_product_test_data()
 
     @staticmethod
     def test_create_product():
@@ -36,3 +40,29 @@ class ProductSchemaMutationTest(TestCase):
         executed = client.execute('''mutation{removeProduct(id: 1){success errors product{id name}}}''')
         assert len(executed['errors']) > 0
         assert Product.objects.count() == 2
+
+
+class ProductSchemaQueryTest(TestCase):
+    def setUp(self):
+        create_product_test_data()
+
+    @staticmethod
+    def test_products():
+        print(Product.objects.all().count())
+        client = Client(schema)
+        executed = client.execute('''query{products {id name}}''')
+        print(executed)
+        assert executed == {
+            "data": {
+                "products": [
+                    {
+                        "id": "1",
+                        "name": "Buy milk"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Pick up Tomatoes"
+                    }
+                ]
+            }
+        }
