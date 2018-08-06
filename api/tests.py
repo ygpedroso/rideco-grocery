@@ -61,6 +61,14 @@ class ProductSchemaMutationTest(TestCase):
         }
         assert Product.objects.count() == 2
 
+    @staticmethod
+    def test_update_product_with_missing_required_params():
+        client = Client(schema)
+        executed = client.execute('''mutation{updateProduct(productId: 1, wrongParam: "New random name"){success errors 
+                product{id name}}}''')
+        assert len(executed['errors']) > 0
+        assert Product.objects.count() == 2
+
 
 class ProductSchemaQueryTest(TestCase):
     def setUp(self):
