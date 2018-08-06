@@ -28,4 +28,6 @@ will fallback to `False` by default. To run the server with `DEBUG` enabled, pro
 `True`.   
 
 ## Grocery List staging server url:
-[https://rideco-grocery.herokuapp.com/](https://rideco-grocery.herokuapp.com/)
+1. Base Url: [https://rideco-grocery.herokuapp.com/](https://rideco-grocery.herokuapp.com/)
+2. GraphQL API(Enable endpoint and simple view for testing api): 
+[https://rideco-grocery.herokuapp.com/api](https://rideco-grocery.herokuapp.com/api)
