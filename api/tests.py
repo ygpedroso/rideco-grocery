@@ -41,6 +41,26 @@ class ProductSchemaMutationTest(TestCase):
         assert len(executed['errors']) > 0
         assert Product.objects.count() == 2
 
+    @staticmethod
+    def test_update_product():
+        client = Client(schema)
+        executed = client.execute('''mutation{updateProduct(productId: 1, name: "New random name"){success errors 
+        product{id name}}}''')
+        assert executed['data']['updateProduct']['success'] is True
+        assert executed == {
+            "data": {
+                "updateProduct": {
+                    "product": {
+                        "id": "1",
+                        "name": "New random name"
+                    },
+                    "success": True,
+                    "errors": None
+                }
+            }
+        }
+        assert Product.objects.count() == 2
+
 
 class ProductSchemaQueryTest(TestCase):
     def setUp(self):
@@ -48,10 +68,8 @@ class ProductSchemaQueryTest(TestCase):
 
     @staticmethod
     def test_products():
-        print(Product.objects.all().count())
         client = Client(schema)
         executed = client.execute('''query{products {id name}}''')
-        print(executed)
         assert executed == {
             "data": {
                 "products": [
