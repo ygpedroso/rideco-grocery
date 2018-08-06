@@ -30,4 +30,9 @@ class ProductSchemaMutationTest(TestCase):
         assert executed['data']['removeProduct']['success'] is True
         assert Product.objects.count() == 1
 
-
+    @staticmethod
+    def test_remove_plan_with_missing_required_params():
+        client = Client(schema)
+        executed = client.execute('''mutation{removeProduct(id: 1){success errors product{id name}}}''')
+        assert len(executed['errors']) > 0
+        assert Product.objects.count() == 2
