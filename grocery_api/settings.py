@@ -17,24 +17,23 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='nswwion&rcug8^pjlm&fzsw93&8_didv&^0eu1ig_7=0ns$^z=')
+SECRET_KEY = config('SECRET_KEY', default='sh73945y6etp8^pjlm&fzs%39fh47qkl3n^0eu1ig_7=0ns$^z=')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'core',
     'api',
+    'corsheaders',
     'graphene_django',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +47,14 @@ GRAPHENE = {
     'SCHEMA': 'api.schema.schema'
 }
 
+CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL', default=False, cast=bool)
+
+CORS_ORIGIN_WHITELIST = (
+    config('CORS_ORIGIN_ALLOWED_APP', default='localhost:3000'),
+)
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'grocery_api.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -97,7 +102,6 @@ else:
             default=SQLITE_DB_URL,
         )
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -117,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -130,7 +133,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
