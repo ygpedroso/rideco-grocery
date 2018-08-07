@@ -27,6 +27,11 @@ By default the application will obtain the `DEBUG` variable value from an enviro
 will fallback to `False` by default. To run the server with `DEBUG` enabled, provide the `DEBUG` environment variable with
 `True`.   
 
+## CORS
+By default the server will not allow requests from different domain(only from `localhost:3000`), in order to override 
+this behavior the `CORS_ORIGIN_ALLOW_ALL` environment variable needs to be set to `True` before running the server. Or
+setting the `CORS_ORIGIN_ALLOWED_APP` to your app domain.
+
 ## Grocery List staging server url:
 1. Base Url: [https://rideco-grocery.herokuapp.com/](https://rideco-grocery.herokuapp.com/)
 2. GraphQL API(Enable endpoint and simple view for testing api): 
