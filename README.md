@@ -1,4 +1,5 @@
 # Contribution Guide:
+[![framework: Django](https://img.shields.io/badge/framework-Django-006400.svg)](https://www.djangoproject.com/) [![framework: Graphene](https://img.shields.io/badge/framework-Graphene-ee7600.svg)](http://docs.graphene-python.org/projects/django/en/latest/)
 
 ## Prerequisites
 1. `python3`, `pip`, `venv`
