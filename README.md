@@ -34,6 +34,6 @@ this behavior the `CORS_ORIGIN_ALLOW_ALL` environment variable needs to be set t
 setting the `CORS_ORIGIN_ALLOWED_APP` to your app domain.
 
 ## Grocery List staging server url:
-1. Base Url: [https://grocery.herokuapp.com/](https://grocery.herokuapp.com/)
+1. Base Url: [https://grocery-api.herokuapp.com/](https://grocery.herokuapp.com/)
 2. GraphQL API(Enable endpoint and simple view for testing api): 
-[https://grocery.herokuapp.com/api](https://grocery.herokuapp.com/api)
+[https://grocery-api.herokuapp.com/api](https://grocery.herokuapp.com/api)
